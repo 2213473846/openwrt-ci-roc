@@ -89,6 +89,15 @@ git clone --depth=1 https://github.com/eamonxg/luci-app-aurora-config feeds/luci
 git clone --depth=1 https://github.com/NONGFAH/luci-app-athena-led package/luci-app-athena-led
 chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app-athena-led/root/usr/sbin/athena-led
 
+sudo bash -c 'curl -sSL https://raw.githubusercontent.com/mufeng05/turboacc/main/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh'
+
+         
+          git status --porcelain --untracked-files=all -- \
+            target/linux/generic/hack-6.12 \
+            target/linux/generic/pending-6.12 \
+            package/libs/libnftnl/patches \
+            | grep '^??' | cut -c4- | while read -r f; do sudo rm -f "$f" && echo "removed turboacc patch: $f"; done || true
+
 ### PassWall & OpenClash ###
 
 # 移除 OpenWrt Feeds 自带的核心库
