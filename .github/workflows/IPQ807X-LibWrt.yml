@@ -17,8 +17,8 @@ jobs:
       contents: write
       actions: write
     with:
-      repo_url: https://github.com/laipeng668/openwrt-6.x.git
-      repo_branch: 25.12-nss
+      repo_url: https://github.com/LiBwrt/LibWrt.git
+      repo_branch: main-nss
       config_file: configs/IPQ807X.config
       firmware_tag: IPQ807X
       kernel_file: kernel-6.12
