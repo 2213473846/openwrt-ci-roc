@@ -282,13 +282,6 @@ if package_enabled luci-app-aurora-config; then
   clone_repository https://github.com/eamonxg/luci-app-aurora-config master feeds/luci/applications/luci-app-aurora-config
 fi
 
-if package_enabled luci-app-openlist2 openlist2; then
-  # clone_repository https://github.com/laipeng668/luci-app-openlist2 main package/openlist2
-fi
-
-if package_enabled luci-app-lucky lucky; then
-  # clone_repository https://github.com/gdy666/luci-app-lucky main package/luci-app-lucky
-fi
 
 if package_enabled luci-app-wechatpush; then
   rm -rf feeds/luci/applications/luci-app-wechatpush
@@ -300,9 +293,6 @@ if package_enabled luci-app-oaf open-app-filter; then
   # clone_repository https://github.com/destan19/OpenAppFilter.git master package/OpenAppFilter
 fi
 
-if package_enabled luci-app-gecoosac gecoosac; then
-  # clone_repository https://github.com/laipeng668/luci-app-gecoosac main package/luci-app-gecoosac
-fi
 
 if package_enabled luci-app-athena-led luci-i18n-athena-led-zh-cn; then
   clone_repository https://github.com/NONGFAH/luci-app-athena-led main package/luci-app-athena-led
