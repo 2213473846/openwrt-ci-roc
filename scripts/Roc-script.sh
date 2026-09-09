@@ -134,7 +134,7 @@ printf 'Repository\tBranch\tCommit\n' > "$THIRD_PARTY_SOURCES_FILE"
 
 # 修改默认IP & 固件名称 & 编译署名和时间
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-sed -i "s/hostname='.*'/hostname='Roc'/g" package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='2213473846'/g" package/base-files/files/bin/config_generate
 luci_system_js="feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js"
 firmware_version_anchor="_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),"
 grep -Fq "$firmware_version_anchor" "$luci_system_js" || { echo "Error: LuCI firmware version anchor was not found in $luci_system_js" >&2; exit 1; }
@@ -145,10 +145,10 @@ sed -i "s#_('Firmware Version'), (L\.isObject(boardinfo\.release) ? boardinfo\.r
                 ? boardinfo.release.description + ' / '\n \
                 : '') + (luciversion || '') + ' / ',\n \
             E('a', {\n \
-                href: 'https://github.com/laipeng668/openwrt-ci-roc/releases',\n \
+                href: 'https://github.com/2213473846/openwrt-ci-roc/releases',\n \
                 target: '_blank',\n \
                 rel: 'noopener noreferrer'\n \
-                }, [ 'Built by Roc $(date "+%Y-%m-%d %H:%M:%S")' ])\n \
+                }, [ 'Built by 2213473846 $(date "+%Y-%m-%d %H:%M:%S")' ])\n \
             ]),#" "$luci_system_js"
 
 # 调整NSS驱动q6_region内存区域预留大小（ipq6018.dtsi默认预留85MB，ipq6018-512m.dtsi默认预留55MB，带WiFi必须至少预留54MB，以下分别是改成预留16MB、32MB、64MB和96MB）
@@ -197,8 +197,8 @@ mv package/golang feeds/packages/lang/golang
 
 if package_enabled luci-app-aria2 aria2; then
   rm -rf feeds/packages/net/aria2
-  git_sparse_clone aria2 https://github.com/laipeng668/packages net/aria2
-  mv package/aria2 feeds/packages/net/aria2
+  # git_sparse_clone aria2 https://github.com/laipeng668/packages net/aria2
+  # mv package/aria2 feeds/packages/net/aria2
 fi
 if package_enabled ariang; then
   rm -rf feeds/packages/net/ariang
@@ -214,13 +214,13 @@ fi
 
 if package_enabled luci-app-ddns ddns-scripts ddns-scripts-cloudflare; then
   rm -rf feeds/packages/net/ddns-scripts
-  git_sparse_clone master https://github.com/laipeng668/packages net/ddns-scripts
-  mv package/ddns-scripts feeds/packages/net/ddns-scripts
+  # git_sparse_clone master https://github.com/laipeng668/packages net/ddns-scripts
+  # mv package/ddns-scripts feeds/packages/net/ddns-scripts
 fi
 if package_enabled luci-app-ddns; then
   rm -rf feeds/luci/applications/luci-app-ddns
-  git_sparse_clone master https://github.com/laipeng668/luci applications/luci-app-ddns
-  mv package/luci-app-ddns feeds/luci/applications/luci-app-ddns
+  # git_sparse_clone master https://github.com/laipeng668/luci applications/luci-app-ddns
+  # mv package/luci-app-ddns feeds/luci/applications/luci-app-ddns
 fi
 
 if package_enabled frp frpc frps luci-app-frpc luci-app-frps; then
@@ -259,8 +259,8 @@ fi
 
 if package_enabled luci-app-wol; then
   rm -rf feeds/luci/applications/luci-app-wol
-  git_sparse_clone master https://github.com/immortalwrt/luci applications/luci-app-wol
-  mv package/luci-app-wol feeds/luci/applications/luci-app-wol
+  # git_sparse_clone master https://github.com/immortalwrt/luci applications/luci-app-wol
+  # mv package/luci-app-wol feeds/luci/applications/luci-app-wol
 fi
 
 # Themes and standalone applications. A config application pulls in its theme as a dependency.
@@ -283,25 +283,25 @@ if package_enabled luci-app-aurora-config; then
 fi
 
 if package_enabled luci-app-openlist2 openlist2; then
-  clone_repository https://github.com/laipeng668/luci-app-openlist2 main package/openlist2
+  # clone_repository https://github.com/laipeng668/luci-app-openlist2 main package/openlist2
 fi
 
 if package_enabled luci-app-lucky lucky; then
-  clone_repository https://github.com/gdy666/luci-app-lucky main package/luci-app-lucky
+  # clone_repository https://github.com/gdy666/luci-app-lucky main package/luci-app-lucky
 fi
 
 if package_enabled luci-app-wechatpush; then
   rm -rf feeds/luci/applications/luci-app-wechatpush
-  clone_repository https://github.com/tty228/luci-app-wechatpush master package/luci-app-wechatpush
+  # clone_repository https://github.com/tty228/luci-app-wechatpush master package/luci-app-wechatpush
 fi
 
 if package_enabled luci-app-oaf open-app-filter; then
   rm -rf feeds/luci/applications/luci-app-appfilter feeds/packages/net/open-app-filter
-  clone_repository https://github.com/destan19/OpenAppFilter.git master package/OpenAppFilter
+  # clone_repository https://github.com/destan19/OpenAppFilter.git master package/OpenAppFilter
 fi
 
 if package_enabled luci-app-gecoosac gecoosac; then
-  clone_repository https://github.com/laipeng668/luci-app-gecoosac main package/luci-app-gecoosac
+  # clone_repository https://github.com/laipeng668/luci-app-gecoosac main package/luci-app-gecoosac
 fi
 
 if package_enabled luci-app-athena-led luci-i18n-athena-led-zh-cn; then
@@ -314,22 +314,22 @@ fi
 if package_enabled luci-app-passwall luci-app-passwall2; then
   # 移除 OpenWrt Feeds 自带的核心库
   rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-  clone_repository https://github.com/Openwrt-Passwall/openwrt-passwall-packages main package/passwall-packages
+  # clone_repository https://github.com/Openwrt-Passwall/openwrt-passwall-packages main package/passwall-packages
 fi
 
 if package_enabled luci-app-passwall; then
   rm -rf feeds/luci/applications/luci-app-passwall
-  clone_repository https://github.com/Openwrt-Passwall/openwrt-passwall main package/luci-app-passwall
+  # clone_repository https://github.com/Openwrt-Passwall/openwrt-passwall main package/luci-app-passwall
 fi
 
 if package_enabled luci-app-passwall2; then
   rm -rf feeds/luci/applications/luci-app-passwall2
-  clone_repository https://github.com/Openwrt-Passwall/openwrt-passwall2 main package/luci-app-passwall2
+  # clone_repository https://github.com/Openwrt-Passwall/openwrt-passwall2 main package/luci-app-passwall2
 fi
 
 if package_enabled luci-app-openclash; then
   rm -rf feeds/luci/applications/luci-app-openclash
-  clone_repository https://github.com/vernesong/OpenClash master package/luci-app-openclash
+  # clone_repository https://github.com/vernesong/OpenClash master package/luci-app-openclash
 fi
 
 # 清理 PassWall 的 chnlist 规则文件
